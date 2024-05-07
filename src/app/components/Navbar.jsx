@@ -44,7 +44,7 @@ export default function Navbar() {
         <div className="bg-red-500 text-white px-3 py-2 text-2xl md:text-5xl">
           Marvelous
         </div>
-        <div className="flex items-center gap-5 md:hidden">
+        <div className=" items-center gap-5 md:hidden sm:flex">
           <Switch
             checked={darkMode}
             onChange={handleDarkMode}
@@ -110,7 +110,7 @@ export default function Navbar() {
             </Transition>
           </Menu>
         </div>
-        <div className="flex gap-5 text-2xl pr-5 sm:hidden md:flex">
+        <div className=" gap-5 text-2xl pr-5 hidden md:flex">
           <Switch
             checked={darkMode}
             onChange={handleDarkMode}
