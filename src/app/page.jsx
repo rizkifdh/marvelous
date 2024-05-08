@@ -36,12 +36,14 @@ export default function Home() {
               <div style={{ position: "relative", height: "400px" }}>
                 <Image
                   src={`${item.thumbnail.path}.${item.thumbnail.extension}`}
-                  blurDataURL={`${item.thumbnail.path}.${item.thumbnail.extension}`}
                   fill
                   sizes="(min-width: 300px) 50vw, 100vw"
                   style={{
                     objectFit: "cover",
                   }}
+                  onLoadingComplete={(image) =>
+                    image.classList.remove("animate-pulse")
+                  }
                 />
               </div>
               <div className="bg-sky-700 text-white truncate block text-center text-3xl p-5">
