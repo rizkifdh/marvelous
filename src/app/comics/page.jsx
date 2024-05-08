@@ -27,8 +27,8 @@ export default function Comics() {
 
   return (
     <main className="flex flex-col items-center pt-10">
-      <div className="text-3xl underline md:text-5xl">comics</div>
-      <div className="grid grid-rows-3 gap-5 pt-10 justify-center md:grid-cols-4">
+      <div className="text-3xl md:text-5xl">comics</div>
+      <div className="grid grid-rows-3 gap-5 pt-10 justify-center md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {data.map((item) => (
           <div key={item.id} className="">
             <div className="flex flex-col w-[300px] h-[380px]">
