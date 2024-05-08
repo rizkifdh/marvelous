@@ -35,6 +35,7 @@ export default function Comics() {
               <div style={{ position: "relative", height: "400px" }}>
                 <Image
                   src={`${item.thumbnail.path}.${item.thumbnail.extension}`}
+                  blurDataURL={`${item.thumbnail.path}.${item.thumbnail.extension}`}
                   fill
                   sizes="(min-width: 300px) 50vw, 100vw"
                   style={{

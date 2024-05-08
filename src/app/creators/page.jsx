@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import Loader from "../components/Loader";
 export default function Creators() {
   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
@@ -36,6 +37,7 @@ export default function Creators() {
               <div style={{ position: "relative", height: "400px" }}>
                 <Image
                   src={`${item.thumbnail.path}.${item.thumbnail.extension}`}
+                  blurDataURL={`${item.thumbnail.path}.${item.thumbnail.extension}`}
                   fill
                   sizes="(min-width: 300px) 50vw, 100vw"
                   style={{
