@@ -1,6 +1,8 @@
 /** @type {import('tailwindcss').Config} */
 const defaultTheme = require("tailwindcss/defaultTheme");
-module.exports = {
+const withMT = require("@material-tailwind/react/utils/withMT");
+
+module.exports = withMT({
   darkMode: "class",
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -17,6 +19,8 @@ module.exports = {
       colors: {
         black: "#1f2937",
         dark: "#1f2937",
+        primary: "#0369a1",
+        secondary: "#f0131e",
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
@@ -26,4 +30,4 @@ module.exports = {
     },
   },
   plugins: [],
-};
+});

@@ -2,24 +2,39 @@
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import Loader from "../components/Loader";
+import Pagination from "../components/Pagination";
+
 export default function Creators() {
   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
   const [data, setdata] = useState([]);
+  const [total, settotal] = useState();
+  const [offset, setoffset] = useState(0);
+  const [pageCount, setpageCount] = useState(0);
+  const [loading, setloading] = useState(false);
+  const [currentPage, setcurrentPage] = useState(0);
+
   const fetchCreators = async () => {
-    const res = await fetch(`${apiUrl}/creators`);
+    setloading(true);
+    setoffset(offset);
+    const res = await fetch(`${apiUrl}/creators?offset=${offset}&limit=10`);
 
     const data = await res.json();
 
+    settotal(data.data.total);
     setdata(data.data.results);
+    setloading(false);
   };
 
   useEffect(() => {
     fetchCreators();
-  }, []);
+  }, [offset]);
 
-  if (data?.length < 1) {
+  useEffect(() => {
+    setpageCount(Math.ceil(total / 10));
+  }, [total]);
+
+  if (loading) {
     return (
       <div className="flex text-5xl md:text-7xl items-center justify-center min-h-screen animate-pulse">
         Loading...
@@ -28,7 +43,7 @@ export default function Creators() {
   }
 
   return (
-    <main className="flex flex-col items-center pt-10">
+    <main className="flex flex-col items-center pt-10 gap-5">
       <div className="text-3xl md:text-5xl">creators</div>
       <div className="grid grid-rows-3 gap-5 pt-10 justify-center md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {data.map((item) => (
@@ -54,6 +69,12 @@ export default function Creators() {
           </div>
         ))}
       </div>
+      <Pagination
+        currentPage={currentPage}
+        pageCount={pageCount}
+        setcurrentPage={setcurrentPage}
+        setoffset={setoffset}
+      />
     </main>
   );
 }

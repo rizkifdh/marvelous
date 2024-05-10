@@ -1,8 +1,9 @@
-import { Bangers } from "next/font/google";
+import { Bangers, Inter } from "next/font/google";
 import "./globals.css";
 import Providers from "./provider";
 import Navbar from "./components/Navbar";
 import ScrollToTop from "./components/ScrollToTop";
+import Image from "next/image";
 const bangers = Bangers({ weight: "400", subsets: ["latin"] });
 
 export const metadata = {
@@ -20,6 +21,17 @@ export default function RootLayout({ children }) {
         <Providers>
           <div className="sticky top-0 z-40">
             <Navbar />
+          </div>
+
+          <div className="w-full h-full flex fixed " style={{ zIndex: -1 }}>
+            <Image
+              src="/bg.png"
+              alt="background"
+              width={1920}
+              height={1080}
+              objectFit="cover"
+              className="opacity-10"
+            />
           </div>
           {children}
           <ScrollToTop />

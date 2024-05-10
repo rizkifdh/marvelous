@@ -41,10 +41,7 @@ export default function Navbar() {
   console.log("params", params);
 
   return (
-    <div className="bg-white dark:bg-dark pt-5 pb-5">
-      <div className="text-sm text-sky-500 pb-3">
-        (this web still in development)
-      </div>
+    <div className="bg-white dark:bg-dark pb-5">
       <div className="flex justify-between items-center">
         <div className="bg-red-500 text-white px-3 py-2 text-2xl md:text-5xl">
           Marvelous
@@ -85,8 +82,8 @@ export default function Navbar() {
                 <MenuItem>
                   <a
                     className={`${
-                      params === "/" ? "text-sky-700 underline" : null
-                    } block hover:text-sky-700 hover:underline`}
+                      params === "/" ? "text-secondary underline" : null
+                    } block hover:text-secondary hover:underline`}
                     href="/"
                   >
                     Characters
@@ -95,8 +92,8 @@ export default function Navbar() {
                 <MenuItem>
                   <a
                     className={`${
-                      params === "/comics" ? "text-sky-700 underline" : null
-                    } block hover:text-sky-700 hover:underline`}
+                      params === "/comics" ? "text-secondary underline" : null
+                    } block hover:text-secondary hover:underline`}
                     href="/comics"
                   >
                     Comics
@@ -105,8 +102,8 @@ export default function Navbar() {
                 <MenuItem>
                   <a
                     className={`${
-                      params === "/creators" ? "text-sky-700 underline" : null
-                    } block hover:text-sky-700 hover:underline`}
+                      params === "/creators" ? "text-secondary underline" : null
+                    } block hover:text-secondary hover:underline`}
                     href="/creators"
                   >
                     Creators
@@ -115,8 +112,8 @@ export default function Navbar() {
                 <MenuItem>
                   <a
                     className={`${
-                      params === "/series" ? "text-sky-700 underline" : null
-                    } block hover:text-sky-700 hover:underline`}
+                      params === "/series" ? "text-secondary underline" : null
+                    } block hover:text-secondary hover:underline`}
                     href="/series"
                   >
                     Series
@@ -142,32 +139,32 @@ export default function Navbar() {
           <Link
             href="/"
             className={`${
-              params === "/" ? "text-sky-700 underline" : null
-            } block hover:text-sky-700 hover:underline`}
+              params === "/" ? "text-secondary underline" : null
+            } block hover:text-secondary hover:underline`}
           >
             Characters
           </Link>
           <Link
             href="/comics"
             className={`${
-              params === "/comics" ? "text-sky-700 underline" : null
-            } block hover:text-sky-700 hover:underline`}
+              params === "/comics" ? "text-secondary underline" : null
+            } block hover:text-secondary hover:underline`}
           >
             Comics
           </Link>
           <Link
             href="/creators"
             className={`${
-              params === "/creators" ? "text-sky-700 underline" : null
-            } block hover:text-sky-700 hover:underline`}
+              params === "/creators" ? "text-secondary underline" : null
+            } block hover:text-secondary hover:underline`}
           >
             Creators
           </Link>
           <Link
             href="/series"
             className={`${
-              params === "/series" ? "text-sky-700 underline" : null
-            } block hover:text-sky-700 hover:underline`}
+              params === "/series" ? "text-secondary underline" : null
+            } block hover:text-secondary hover:underline`}
           >
             Series
           </Link>
