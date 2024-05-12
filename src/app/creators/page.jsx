@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import Pagination from "../components/Pagination";
-
+import Link from "next/link";
 export default function Creators() {
   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
@@ -42,30 +42,40 @@ export default function Creators() {
     );
   }
 
+  if (!data) {
+    return (
+      <div className="flex text-5xl md:text-7xl items-center justify-center min-h-screen animate-pulse">
+        Not Found
+      </div>
+    );
+  }
+
   return (
     <main className="flex flex-col items-center pt-10 gap-5">
       <div className="text-3xl md:text-5xl">creators</div>
       <div className="grid grid-rows-3 gap-5 pt-10 justify-center md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {data.map((item) => (
           <div key={item.id} className="">
-            <div className="flex flex-col w-[300px] h-[380px]">
-              <div style={{ position: "relative", height: "400px" }}>
-                <Image
-                  src={`${item.thumbnail.path}.${item.thumbnail.extension}`}
-                  fill
-                  sizes="(min-width: 300px) 50vw, 100vw"
-                  style={{
-                    objectFit: "cover",
-                  }}
-                  onLoadingComplete={(image) =>
-                    image.classList.remove("animate-pulse")
-                  }
-                />
+            <Link href={`creators/${item.id}`}>
+              <div className="flex flex-col w-[300px] h-[380px]">
+                <div style={{ position: "relative", height: "400px" }}>
+                  <Image
+                    src={`${item.thumbnail.path}.${item.thumbnail.extension}`}
+                    fill
+                    sizes="(min-width: 300px) 50vw, 100vw"
+                    style={{
+                      objectFit: "cover",
+                    }}
+                    onLoadingComplete={(image) =>
+                      image.classList.remove("animate-pulse")
+                    }
+                  />
+                </div>
+                <div className="bg-secondary text-white truncate block text-center text-3xl p-5">
+                  {item.fullName}
+                </div>
               </div>
-              <div className="bg-sky-700 text-white truncate block text-center text-3xl p-5">
-                {item.fullName}
-              </div>
-            </div>
+            </Link>
           </div>
         ))}
       </div>

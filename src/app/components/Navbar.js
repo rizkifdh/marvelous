@@ -16,7 +16,12 @@ import { CgMenuMotion } from "react-icons/cg";
 import { LuSunMedium } from "react-icons/lu";
 import { useTheme } from "next-themes";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import {
+  usePathname,
+  useSearchParams,
+  useRouter,
+  useParams,
+} from "next/navigation";
 export default function Navbar() {
   const { setTheme, resolvedTheme } = useTheme();
   const [darkMode, setdarkMode] = useState(false);
@@ -34,17 +39,16 @@ export default function Navbar() {
 
   useEffect(() => {
     setdarkMode(false);
-    setTheme("light");
   }, []);
 
   const params = usePathname();
-  console.log("params", params);
+  const { id } = useParams();
 
   return (
     <div className="bg-white dark:bg-dark pb-5">
       <div className="flex justify-between items-center">
         <div className="bg-red-500 text-white px-3 py-2 text-2xl md:text-5xl">
-          Marvelous
+          <Link href="/">Marvelous</Link>
         </div>
         <div className=" items-center gap-5 md:hidden sm:flex">
           <Switch
@@ -82,7 +86,9 @@ export default function Navbar() {
                 <MenuItem>
                   <a
                     className={`${
-                      params === "/" ? "text-secondary underline" : null
+                      params === "/" || params === `/characters/${id}`
+                        ? "text-secondary underline"
+                        : null
                     } block hover:text-secondary hover:underline`}
                     href="/"
                   >
@@ -92,7 +98,9 @@ export default function Navbar() {
                 <MenuItem>
                   <a
                     className={`${
-                      params === "/comics" ? "text-secondary underline" : null
+                      params === "/comics" || params === `/comics/${id}`
+                        ? "text-secondary underline"
+                        : null
                     } block hover:text-secondary hover:underline`}
                     href="/comics"
                   >
@@ -102,7 +110,9 @@ export default function Navbar() {
                 <MenuItem>
                   <a
                     className={`${
-                      params === "/creators" ? "text-secondary underline" : null
+                      params === "/creators" || params === `/creators/${id}`
+                        ? "text-secondary underline"
+                        : null
                     } block hover:text-secondary hover:underline`}
                     href="/creators"
                   >
@@ -112,7 +122,9 @@ export default function Navbar() {
                 <MenuItem>
                   <a
                     className={`${
-                      params === "/series" ? "text-secondary underline" : null
+                      params === "/series" || params === `/series/${id}`
+                        ? "text-secondary underline"
+                        : null
                     } block hover:text-secondary hover:underline`}
                     href="/series"
                   >
@@ -139,7 +151,9 @@ export default function Navbar() {
           <Link
             href="/"
             className={`${
-              params === "/" ? "text-secondary underline" : null
+              params === "/" || params === `/characters/${id}`
+                ? "text-secondary underline"
+                : null
             } block hover:text-secondary hover:underline`}
           >
             Characters
@@ -147,7 +161,9 @@ export default function Navbar() {
           <Link
             href="/comics"
             className={`${
-              params === "/comics" ? "text-secondary underline" : null
+              params === "/comics" || params === `/comics/${id}`
+                ? "text-secondary underline"
+                : null
             } block hover:text-secondary hover:underline`}
           >
             Comics
@@ -155,7 +171,9 @@ export default function Navbar() {
           <Link
             href="/creators"
             className={`${
-              params === "/creators" ? "text-secondary underline" : null
+              params === "/creators" || params === `/creators/${id}`
+                ? "text-secondary underline"
+                : null
             } block hover:text-secondary hover:underline`}
           >
             Creators
@@ -163,7 +181,9 @@ export default function Navbar() {
           <Link
             href="/series"
             className={`${
-              params === "/series" ? "text-secondary underline" : null
+              params === "/series" || params === `/series/${id}`
+                ? "text-secondary underline"
+                : null
             } block hover:text-secondary hover:underline`}
           >
             Series

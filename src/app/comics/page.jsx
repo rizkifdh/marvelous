@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import Pagination from "../components/Pagination";
-
+import Link from "next/link";
 export default function Comics() {
   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
@@ -49,25 +49,27 @@ export default function Comics() {
       <div className="grid grid-rows-3 gap-5 justify-center md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {data.map((item) => (
           <div key={item.id} className="">
-            <div className="flex flex-col w-[300px] h-[380px]">
-              <div style={{ position: "relative", height: "400px" }}>
-                <Image
-                  src={`${item.thumbnail.path}.${item.thumbnail.extension}`}
-                  fill
-                  className="animate-pulse"
-                  sizes="(min-width: 300px) 50vw, 100vw"
-                  style={{
-                    objectFit: "cover",
-                  }}
-                  onLoadingComplete={(image) =>
-                    image.classList.remove("animate-pulse")
-                  }
-                />
+            <Link href={`comics/${item.id}`}>
+              <div className="flex flex-col w-[300px] h-[380px]">
+                <div style={{ position: "relative", height: "400px" }}>
+                  <Image
+                    src={`${item.thumbnail.path}.${item.thumbnail.extension}`}
+                    fill
+                    className="animate-pulse"
+                    sizes="(min-width: 300px) 50vw, 100vw"
+                    style={{
+                      objectFit: "cover",
+                    }}
+                    onLoadingComplete={(image) =>
+                      image.classList.remove("animate-pulse")
+                    }
+                  />
+                </div>
+                <div className="bg-secondary text-white truncate block text-center text-3xl p-5">
+                  {item.title}
+                </div>
               </div>
-              <div className="bg-secondary text-white truncate block text-center text-3xl p-5">
-                {item.title}
-              </div>
-            </div>
+            </Link>
           </div>
         ))}
       </div>

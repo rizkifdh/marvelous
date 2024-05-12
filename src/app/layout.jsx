@@ -16,7 +16,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${bangers.className} p-5 dark:bg-black text-black dark:text-white`}
+        className={`${bangers.className} p-5 dark:bg-black text-black dark:text-white min-h-screen`}
       >
         <Providers>
           <div className="sticky top-0 z-40">
@@ -35,7 +35,7 @@ export default function RootLayout({ children }) {
           </div>
           {children}
           <ScrollToTop />
-          <footer className="pt-5">
+          <footer className="pt-5 sticky top-[100vh]">
             <hr className="font-bold" />
             <div className="pt-3 flex md:text-xl sm:text-sm justify-between">
               <a
